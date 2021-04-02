@@ -7,6 +7,16 @@ $bgc-black: #000;
 $color-black: #000;
 $color-font: #fff;
 
+//function
+//px轉rem
+//原理：先設 default-px 為 16px , html tag 的 font-size 吃 default-px 這個變數 , 換算出 rem
+//範例：24px = 24 / 16 = 1.5rem
 @function pxToRem($px) {
     @return $px / $default-px * 1rem;
+}
+
+//@extend
+%default-a-tag {
+    color: $color-font;
+    text-decoration: none;
 }

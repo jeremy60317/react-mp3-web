@@ -1,12 +1,22 @@
 @import '../../variables';
 
+//@extend
+%child-layout {
+    padding-left: pxToRem(24px);
+    padding-right: pxToRem(24px);
+    margin-bottom: pxToRem(24px);
+}
 %padding-left-right {
     padding-left: pxToRem(24px);
     padding-right: pxToRem(24px);
 }
+%margin-bottom {
+    margin-bottom: pxToRem(24px);
+}
 
+//css
 .wrapper {
-    width: pxToRem(172px);
+    width: pxToRem(230px);
     height: 100%;
     outline: 1px solid red;
     background: $bgc-black;
@@ -15,7 +25,7 @@
 }
 
 .sideBarTitleList {
-    @extend %padding-left-right;
+    @extend %child-layout;
     color: $color-font;
     li {
         display: flex;
@@ -26,6 +36,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        @extend %default-a-tag;
     }
     .iconBox {
         width: pxToRem(24px);
@@ -38,10 +49,9 @@
 }
 
 .logo {
-    @extend %padding-left-right;
+    @extend %child-layout;
     display: block;
-    margin-bottom: pxToRem(24px);
     img {
-        width: 100%;
+        width: pxToRem(130px);
     }
 }
