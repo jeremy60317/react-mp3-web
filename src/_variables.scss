@@ -1,0 +1,12 @@
+//預設字大小
+$default-px: 16px !default;
+
+//背景色
+$bgc-black: #000;
+
+$color-black: #000;
+$color-font: #fff;
+
+@function pxToRem($px) {
+    @return $px / $default-px * 1rem;
+}

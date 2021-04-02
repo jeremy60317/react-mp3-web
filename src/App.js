@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ContextStore from './context/contextStore'
+import { songs } from './song'
+
+import SideBar from './component/SideBar/SideBar'
+import MediaPlayer from './component/MediaPlayer/MediaPlayer'
+
+import './App.scss'
+
+const initState = {
+    songs: songs,
 }
 
-export default App;
+const App = () => {
+    const [state, setState] = useState(initState)
+    const setContextState = (receiveState) => setState({ ...state, ...receiveState })
+
+    return (
+        <div className="App">
+            <ContextStore.Provider
+                value={{
+                    contextState: state,
+                    setContextState,
+                }}
+            >
+                <div className="globalWrapper">
+                    <SideBar />
+                    {/* <MediaPlayer state={state} /> */}
+                </div>
+            </ContextStore.Provider>
+        </div>
+    )
+}
+
+export default App

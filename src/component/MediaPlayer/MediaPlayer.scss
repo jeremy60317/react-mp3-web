@@ -1,0 +1,65 @@
+@import '../../variables';
+
+.MediaPlayer {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.controller {
+    display: flex;
+    position: relative;
+}
+
+.controller::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: gray;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+button {
+    padding: 0 5px;
+    flex: 1;
+    z-index: 1;
+}
+
+.barBox {
+    flex: 9;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        flex: 1;
+        font-size: 10px;
+        display: block;
+        padding: 0 15px;
+        color: white;
+    }
+}
+
+.bar {
+    flex: 8;
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.point {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    top: -4px;
+    left: 0;
+    display: block;
+    background-color: red;
+    border-radius: 50%;
+}

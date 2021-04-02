@@ -1,0 +1,47 @@
+@import '../../variables';
+
+%padding-left-right {
+    padding-left: pxToRem(24px);
+    padding-right: pxToRem(24px);
+}
+
+.wrapper {
+    width: pxToRem(172px);
+    height: 100%;
+    outline: 1px solid red;
+    background: $bgc-black;
+    padding-top: pxToRem(24px);
+    box-sizing: border-box;
+}
+
+.sideBarTitleList {
+    @extend %padding-left-right;
+    color: $color-font;
+    li {
+        display: flex;
+        align-items: center;
+        height: pxToRem(40px);
+    }
+    a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .iconBox {
+        width: pxToRem(24px);
+        margin-right: pxToRem(12px);
+    }
+    img {
+        height: pxToRem(24px);
+        margin-right: pxToRem(12px);
+    }
+}
+
+.logo {
+    @extend %padding-left-right;
+    display: block;
+    margin-bottom: pxToRem(24px);
+    img {
+        width: 100%;
+    }
+}
