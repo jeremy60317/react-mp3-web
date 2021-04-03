@@ -2,56 +2,70 @@
 
 //@extend
 %child-layout {
-    padding-left: pxToRem(24px);
-    padding-right: pxToRem(24px);
-    margin-bottom: pxToRem(24px);
+  padding-left: pxToRem(24px);
+  padding-right: pxToRem(24px);
+  margin-bottom: pxToRem(24px);
 }
 %padding-left-right {
-    padding-left: pxToRem(24px);
-    padding-right: pxToRem(24px);
+  padding-left: pxToRem(24px);
+  padding-right: pxToRem(24px);
 }
 %margin-bottom {
-    margin-bottom: pxToRem(24px);
+  margin-bottom: pxToRem(24px);
 }
 
 //css
 .wrapper {
-    width: pxToRem(230px);
-    height: 100%;
-    outline: 1px solid red;
-    background: $bgc-black;
-    padding-top: pxToRem(24px);
-    box-sizing: border-box;
+  width: pxToRem(230px);
+  height: 100%;
+  outline: 1px solid red;
+  background: $bgc-black;
+  padding-top: pxToRem(24px);
+  box-sizing: border-box;
 }
 
-.sideBarTitleList {
-    @extend %child-layout;
-    color: $color-font;
-    li {
-        display: flex;
-        align-items: center;
-        height: pxToRem(40px);
-    }
-    a {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        @extend %default-a-tag;
-    }
-    .iconBox {
-        width: pxToRem(24px);
-        margin-right: pxToRem(12px);
-    }
-    img {
-        height: pxToRem(24px);
-        margin-right: pxToRem(12px);
-    }
+.sideBarTitleList,
+.sideBarAlbumList {
+  @extend %child-layout;
+  color: $color-font;
+  li {
+    display: flex;
+    align-items: center;
+    height: pxToRem(40px);
+  }
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @extend %default-a-tag;
+  }
+  .iconBox {
+    width: pxToRem(24px);
+    margin-right: pxToRem(12px);
+  }
+  img {
+    height: pxToRem(24px);
+    margin-right: pxToRem(12px);
+  }
+}
+
+.sideBarAlbumList {
+  li {
+    height: pxToRem(32px);
+  }
+}
+
+.sideBorder {
+  margin: pxToRem(24px);
+  height: 1px;
+  background-color: #fff;
 }
 
 .logo {
-    @extend %child-layout;
-    display: block;
-    img {
-        width: pxToRem(130px);
-    }
+  @extend %child-layout;
+  display: block;
+  img {
+    width: pxToRem(130px);
+  }
 }

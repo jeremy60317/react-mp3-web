@@ -10,42 +10,43 @@ import MediaPlayer from './component/MediaPlayer/MediaPlayer'
 import './App.scss'
 
 const initState = {
-    songs: songs,
-    album: album,
+  songs: songs,
+  album: album,
 }
 
 const App = () => {
-    const [state, setState] = useState(initState)
-    const setContextState = (receiveState) => setState({ ...state, ...receiveState })
+  const [state, setState] = useState(initState)
+  const setIndexState = (receiveState) =>
+    setState({ ...state, ...receiveState })
 
-    return (
-        <Router>
-            <div className="App">
-                <ContextStore.Provider
-                    value={{
-                        contextState: state,
-                        setContextState,
-                    }}
-                >
-                    <div className="globalWrapper">
-                        <SideBar />
-                        {/* <MediaPlayer state={state} /> */}
-                        <Switch>
-                            <Router exact path="/">
-                                <div>Home</div>
-                            </Router>
-                            <Router path="/album">
-                                <div>album</div>
-                            </Router>
-                            <Router path="/song">
-                                <div>song</div>
-                            </Router>
-                        </Switch>
-                    </div>
-                </ContextStore.Provider>
-            </div>
-        </Router>
-    )
+  return (
+    <Router>
+      <div className="App">
+        <ContextStore.Provider
+          value={{
+            indexState: state,
+            setIndexState,
+          }}
+        >
+          <div className="globalWrapper">
+            <SideBar />
+            {/* <MediaPlayer state={state} /> */}
+            <Switch>
+              <Router exact path="/">
+                <div>Home</div>
+              </Router>
+              <Router path="/album">
+                <div>album</div>
+              </Router>
+              <Router path="/song">
+                <div>song</div>
+              </Router>
+            </Switch>
+          </div>
+        </ContextStore.Provider>
+      </div>
+    </Router>
+  )
 }
 
 export default App
