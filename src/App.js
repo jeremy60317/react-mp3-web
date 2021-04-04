@@ -18,7 +18,7 @@ const App = () => {
   const [state, setState] = useState(initState)
   const setIndexState = (receiveState) =>
     setState({ ...state, ...receiveState })
-
+  console.log('test')
   return (
     <Router>
       <div className="App">
