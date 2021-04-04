@@ -51,6 +51,8 @@
 }
 
 .sideBarAlbumList {
+  height: 45%;
+  overflow-y: scroll;
   li {
     height: pxToRem(32px);
   }

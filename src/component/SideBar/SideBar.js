@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Routers from '../../routers'
 import Logo from '../Logo/Logo'
@@ -14,16 +14,20 @@ import librarySvgDefault from '../../static/svg/icon-my-library-default.svg'
 import librarySvgFocus from '../../static/svg/icon-my-library-focus.svg'
 
 import './SideBar.scss'
-import { RemoveCircleOutlineRounded } from '@material-ui/icons'
 
 const Album = (props) => {
   const { indexState, setIndexState } = useContext(ContextStore)
-  const { album } = indexState
-  console.log('albumIndexState', indexState)
+  const { album, myAlbum } = indexState
+  useEffect(() => {
+    // effect
+    // return () => {
+    //   cleanup
+    // }
+  }, [album])
   return (
     <ul className="sideBarAlbumList">
       <li>
-        <Link>
+        <Link to={Routers.album}>
           <span>所有專輯</span>
         </Link>
       </li>
@@ -44,7 +48,7 @@ const SideBarTitleList = () => {
   return (
     <ul className="sideBarTitleList">
       <li>
-        <Link to={Routers.home}>
+        <Link to={Routers.main}>
           <div className="iconBox">
             <img src={homeSvgDefault} />
           </div>

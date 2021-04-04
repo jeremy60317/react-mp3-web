@@ -67,4 +67,6 @@ const album = [
   },
 ]
 
-export { songs, album }
+const myAlbum = []
+
+export { songs, album, myAlbum }

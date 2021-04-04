@@ -1,5 +1,5 @@
 const Routers = {
-  home: '/',
+  main: '/',
   album: '/album',
 }
 
