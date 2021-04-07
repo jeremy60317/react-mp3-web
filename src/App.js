@@ -1,30 +1,32 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import ContextStore from './context/contextStore'
 import { songs, album } from './song'
 
+import useGlobalState from './hooks/useGlobalState'
 import SideBar from './component/SideBar/SideBar'
+import Main from './component/Main/Main'
 import MediaPlayer from './component/MediaPlayer/MediaPlayer'
 
 import './App.scss'
 
-const initState = {
-  songs: songs,
-  album: album,
-}
+const MainBackground = styled.div`
+  background: red;
+`
 
 const App = () => {
-  const [state, setState] = useState(initState)
-  const setIndexState = (receiveState) =>
-    setState({ ...state, ...receiveState })
+  const initState = useGlobalState()
+  const { globalState, dispatch, actions } = initState
   return (
     <Router>
       <div className="App">
         <ContextStore.Provider
           value={{
-            indexState: state,
-            setIndexState,
+            indexState: globalState,
+            dispatch,
+            actions,
           }}
         >
           <div className="globalWrapper">
@@ -32,7 +34,8 @@ const App = () => {
             {/* <MediaPlayer state={state} /> */}
             <Switch>
               <Router exact path="/">
-                <div>Home</div>
+                <Main />
+                {/* <div>Home</div> */}
               </Router>
               <Router path="/album">
                 <div>album</div>

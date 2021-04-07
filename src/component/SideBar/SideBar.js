@@ -16,7 +16,7 @@ import librarySvgFocus from '../../static/svg/icon-my-library-focus.svg'
 import './SideBar.scss'
 
 const Album = (props) => {
-  const { indexState, setIndexState } = useContext(ContextStore)
+  const { indexState, dispatch, actions } = useContext(ContextStore)
   const { album, myAlbum } = indexState
   useEffect(() => {
     // effect
