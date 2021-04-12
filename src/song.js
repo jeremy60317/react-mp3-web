@@ -1,3 +1,5 @@
+import animeImg from './static/animaMusic.png'
+
 const songs = [
   {
     name: '剛好遇見你',
@@ -56,14 +58,17 @@ const album = [
   {
     name: '經典傳唱',
     songList: classicsSongList,
+    image: animeImg,
   },
   {
     name: 'KTV必唱',
     songList: ktvMustSingSongList,
+    image: animeImg,
   },
   {
     name: '動漫歌曲',
     songList: animeSongList,
+    image: animeImg,
   },
 ]
 

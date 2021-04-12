@@ -13,6 +13,12 @@ import searchSvgFocus from '../../static/svg/icon-search-focus.svg'
 import librarySvgDefault from '../../static/svg/icon-my-library-default.svg'
 import librarySvgFocus from '../../static/svg/icon-my-library-focus.svg'
 
+import {
+  SideBarWrapperStyle,
+  SideBarListStyle,
+  SideBarBorder,
+} from './SideBarStyle'
+
 import './SideBar.scss'
 
 const Album = (props) => {
@@ -25,7 +31,8 @@ const Album = (props) => {
     // }
   }, [album])
   return (
-    <ul className="sideBarAlbumList">
+    <SideBarListStyle type="album">
+      {/* <ul className="sideBarAlbumList"> */}
       <li>
         <Link to={Routers.album}>
           <span>所有專輯</span>
@@ -40,13 +47,15 @@ const Album = (props) => {
           </li>
         )
       })}
-    </ul>
+      {/* </ul> */}
+    </SideBarListStyle>
   )
 }
 
 const SideBarTitleList = () => {
   return (
-    <ul className="sideBarTitleList">
+    <SideBarListStyle>
+      {/* <ul className="sideBarTitleList"> */}
       <li>
         <Link to={Routers.main}>
           <div className="iconBox">
@@ -71,22 +80,23 @@ const SideBarTitleList = () => {
           <span>電台</span>
         </Link>
       </li>
-    </ul>
+      {/* </ul> */}
+    </SideBarListStyle>
   )
 }
 
-const Border = () => <div className="sideBorder"></div>
+const Border = () => <SideBarBorder />
 
 const SideBar = () => {
   const { indexState, setIndexState } = useContext(ContextStore)
   console.log('indexState', indexState)
   return (
-    <div className="wrapper">
+    <SideBarWrapperStyle>
       <Logo logo={logoSvg} cssClass="logo" />
       <SideBarTitleList />
       <Border />
       <Album />
-    </div>
+    </SideBarWrapperStyle>
   )
 }
 
