@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
 const defaultStyle = {
   px: 16,
@@ -18,7 +18,7 @@ const colorStyle = {
   },
 }
 
-const default_a_tag = styled.css`
+const default_a_tag = css`
   text-decoration: none;
   color: ${colorStyle.font.white};
 `
@@ -33,7 +33,7 @@ const GlobalWrapper = styled.div`
    License: none (public domain)
 */
 
-const GlobalStyle = styled.createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html,
   body,
   div,

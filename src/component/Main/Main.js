@@ -13,12 +13,16 @@ const { background, font, color } = colorStyle
 const Main = () => {
   const { now, nowHour, nowMin, nowSec, whenTime } = useNowTime()
   const backgroundColor = {
-    startColor: 'white',
+    startColor: '#03808b',
     endColor: background.mainBlack,
+    end: 40,
   }
   return (
     <MainWrapperStyle bgc={backgroundColor}>
-      <MainTitleStyle>{`${whenTime}，${now}`}</MainTitleStyle>
+      <MainTitleStyle>
+        <h1>首頁</h1>
+        {`${whenTime}，${now}`}
+      </MainTitleStyle>
     </MainWrapperStyle>
   )
 }
