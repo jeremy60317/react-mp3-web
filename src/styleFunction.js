@@ -1,10 +1,8 @@
+import styled, { css } from 'styled-components'
 import {
   GlobalStyle,
   GlobalWrapper,
   default_a_tag,
-  fontColor,
-  color,
-  backgroundColor,
   defaultStyle,
 } from './globalStyle'
 //function
@@ -15,4 +13,29 @@ const pxToRem = (px) => {
   return `${(px / defaultStyle['px']) * 1}rem`
 }
 
-export { pxToRem }
+const bgLinearGradient = ({
+  startColor = 'white',
+  endColor = 'black',
+  start = 0,
+  end = 100,
+}) =>
+  css`
+    background: linear-gradient(
+      to bottom,
+      ${startColor} ${start}%,
+      ${endColor} ${end}%
+    );
+  `
+
+const MainWrapperStyle = styled.div`
+  div {
+    outline: 1px solid red;
+  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 ${pxToRem(30)};
+  ${(props) => props.bgc && bgLinearGradient(props.bgc)}
+`
+
+export { pxToRem, bgLinearGradient, MainWrapperStyle }

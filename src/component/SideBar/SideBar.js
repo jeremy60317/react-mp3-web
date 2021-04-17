@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo'
 
 import ContextStore from '../../context/contextStore'
 
-import logoSvg from '../../static/svg/logo_s.svg'
+import logoSvg from '../../static/svg/iMusicLogo.svg'
 import homeSvgDefault from '../../static/svg/icon-home-default.svg'
 import homeSvgFocus from '../../static/svg/icon-home-focus.svg'
 import searchSvgDefault from '../../static/svg/icon-search-default.svg'
@@ -19,7 +19,7 @@ import {
   SideBarBorder,
 } from './SideBarStyle'
 
-import './SideBar.scss'
+// import './SideBar.scss'
 
 const Album = (props) => {
   const { indexState, dispatch, actions } = useContext(ContextStore)
@@ -92,7 +92,7 @@ const SideBar = () => {
   console.log('indexState', indexState)
   return (
     <SideBarWrapperStyle>
-      <Logo logo={logoSvg} cssClass="logo" />
+      <Logo logo={logoSvg} />
       <SideBarTitleList />
       <Border />
       <Album />

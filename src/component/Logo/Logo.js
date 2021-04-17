@@ -5,9 +5,9 @@ import Routers from '../../routers'
 import { LogoStyle } from './LogoStyle'
 
 const Logo = (props) => {
-  const { logo, cssClass } = props
+  const { logo } = props
   return (
-    <Link className={cssClass} to={Routers.home}>
+    <Link to={Routers.home}>
       <LogoStyle>
         <img src={logo} />
       </LogoStyle>

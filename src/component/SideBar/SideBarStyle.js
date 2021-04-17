@@ -1,13 +1,7 @@
 import styled, { css } from 'styled-components'
-import {
-  default_a_tag,
-  fontColor,
-  color,
-  backgroundColor,
-  defaultStyle,
-} from '../../globalStyle.js'
-
+import { default_a_tag, colorStyle } from '../../globalStyle.js'
 import { pxToRem } from '../../styleFunction'
+const { background, font, color } = colorStyle
 
 const child_layout = css`
   padding-left: ${pxToRem(24)};
@@ -23,7 +17,7 @@ const margin_bottom = css`
 `
 
 const SideBarWrapperStyle = styled.div`
-  ${backgroundColor.black}
+  background: ${background.black};
   width: ${pxToRem(230)};
   height: 100%;
   padding-top: ${pxToRem(24)};
@@ -40,7 +34,7 @@ const sideBarAlbumListStyle = css`
 
 const SideBarListStyle = styled.ul`
   ${child_layout}
-  ${fontColor.white};
+  ${font.white};
   li {
     display: flex;
     align-items: center;

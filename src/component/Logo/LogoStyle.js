@@ -11,7 +11,7 @@ const LogoStyle = styled.div`
   ${child_layout}
   display: block;
   img {
-    width: ${pxToRem(130)};
+    width: 100%;
   }
 `
 export { LogoStyle }
