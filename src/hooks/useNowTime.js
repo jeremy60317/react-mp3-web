@@ -29,7 +29,6 @@ function useNowTime(is12Hour) {
 
   useEffect(() => {
     if (nowMin === 0) {
-      console.log(`${now} update`)
       setWhenTime(when(nowHour))
     }
   }, [nowMin, nowHour, now])

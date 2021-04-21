@@ -23,25 +23,28 @@ import {
 
 const Album = (props) => {
   const { indexState, dispatch, actions } = useContext(ContextStore)
-  const { album, myAlbum } = indexState
-  useEffect(() => {
-    // effect
-    // return () => {
-    //   cleanup
-    // }
-  }, [album])
+  const { allAlbum, myAlbum } = indexState
   return (
-    <SideBarListStyle type="album">
-      {/* <ul className="sideBarAlbumList"> */}
+    <SideBarListStyle type="albumList">
       <li>
-        <Link to={Routers.album}>
-          <span>所有專輯</span>
+        <Link to={Routers.allAlbum}>
+          <span>我的收藏</span>
         </Link>
       </li>
-      {album.map((itm, idx) => {
+      {allAlbum.map((itm, idx) => {
         return (
           <li key={itm.name}>
-            <Link>
+            <Link
+              to={`/${itm.key}`}
+              onClick={() =>
+                dispatch(
+                  actions.pageActions.changePageType({
+                    type: itm.key,
+                    name: itm.name,
+                  })
+                )
+              }
+            >
               <span>{itm.name}</span>
             </Link>
           </li>
@@ -53,10 +56,14 @@ const Album = (props) => {
 }
 
 const SideBarTitleList = () => {
+  const { indexState, actions, dispatch } = useContext(ContextStore)
   return (
     <SideBarListStyle>
-      {/* <ul className="sideBarTitleList"> */}
-      <li>
+      <li
+        onClick={() =>
+          dispatch(actions.pageActions.changePageType({ type: 'index' }))
+        }
+      >
         <Link to={Routers.main}>
           <div className="iconBox">
             <img src={homeSvgDefault} />
@@ -64,23 +71,26 @@ const SideBarTitleList = () => {
           <span>首頁</span>
         </Link>
       </li>
-      <li>
-        <Link to={Routers.album}>
+      <li
+        onClick={() =>
+          dispatch(actions.pageActions.changePageType({ type: 'allAlbum' }))
+        }
+      >
+        <Link to={Routers.allAlbum}>
           <div className="iconBox">
-            <img src={searchSvgDefault} />
+            <img src={librarySvgDefault} />
           </div>
-          <span>瀏覽</span>
+          <span>所有專輯</span>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/song">
           <div className="iconBox">
             <img src={librarySvgDefault} />
           </div>
           <span>電台</span>
         </Link>
-      </li>
-      {/* </ul> */}
+      </li> */}
     </SideBarListStyle>
   )
 }
@@ -88,7 +98,8 @@ const SideBarTitleList = () => {
 const Border = () => <SideBarBorder />
 
 const SideBar = () => {
-  const { indexState, setIndexState } = useContext(ContextStore)
+  const { indexState, actions, dispatch } = useContext(ContextStore)
+  console.log('useContext', useContext(ContextStore))
   console.log('indexState', indexState)
   return (
     <SideBarWrapperStyle>

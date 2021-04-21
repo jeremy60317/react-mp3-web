@@ -1,6 +1,6 @@
 const Routers = {
   main: '/',
-  album: '/album',
+  allAlbum: '/allAlbum',
 }
 
 export default Routers

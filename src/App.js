@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import ContextStore from './context/contextStore'
@@ -13,7 +12,12 @@ import { GlobalStyle, GlobalWrapper } from './globalStyle'
 
 const App = () => {
   const initState = useGlobalState()
-  const { globalState, dispatch, actions } = initState
+  const {
+    globalState,
+    globalState: { pageReducer },
+    dispatch,
+    actions,
+  } = initState
   console.log('globalState', globalState)
   return (
     <Router>
@@ -29,17 +33,27 @@ const App = () => {
           <SideBar />
           {/* <MediaPlayer state={state} /> */}
           <Switch>
-            <Router exact path="/">
-              <Main />
-              {/* <div>Home</div> */}
-            </Router>
-            <Router path="/album">
-              <AlbumMain />
-              {/* <div>album</div> */}
-            </Router>
-            <Router path="/song">
-              <div>song</div>
-            </Router>
+            <Route exact path="/">
+              <Main
+                type={pageReducer.type}
+                title={pageReducer.title}
+                color={pageReducer.backgroundColor}
+              />
+            </Route>
+            {/* <Route path="/allAlbum">
+              <Main
+                type={pageReducer.type}
+                title={pageReducer.title}
+                color={pageReducer.backgroundColor}
+              />
+            </Route> */}
+            <Route path="/:id">
+              <Main
+                type={pageReducer.type}
+                title={pageReducer.title}
+                color={pageReducer.backgroundColor}
+              />
+            </Route>
           </Switch>
         </GlobalWrapper>
       </ContextStore.Provider>

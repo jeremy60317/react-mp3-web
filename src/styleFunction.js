@@ -4,6 +4,7 @@ import {
   GlobalWrapper,
   default_a_tag,
   defaultStyle,
+  colorStyle,
 } from './globalStyle'
 //function
 //px轉rem
@@ -18,14 +19,23 @@ const bgLinearGradient = ({
   endColor = 'black',
   start = 0,
   end = 100,
-}) =>
-  css`
+}) => {
+  return css`
     background: linear-gradient(
       to bottom,
       ${startColor} ${start}%,
       ${endColor} ${end}%
     );
   `
+}
+
+const mainBackgroundColor = (color) => {
+  return {
+    startColor: color,
+    endColor: colorStyle.background.mainBlack,
+    end: 40,
+  }
+}
 
 const MainWrapperStyle = styled.div`
   div {
@@ -38,4 +48,4 @@ const MainWrapperStyle = styled.div`
   ${(props) => props.bgc && bgLinearGradient(props.bgc)}
 `
 
-export { pxToRem, bgLinearGradient, MainWrapperStyle }
+export { pxToRem, bgLinearGradient, MainWrapperStyle, mainBackgroundColor }

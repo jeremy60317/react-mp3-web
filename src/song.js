@@ -54,18 +54,21 @@ const animeSongList = [
   },
 ]
 
-const album = [
+const allAlbum = [
   {
+    key: 'classics',
     name: '經典傳唱',
     songList: classicsSongList,
     image: animeImg,
   },
   {
+    key: 'ktv',
     name: 'KTV必唱',
     songList: ktvMustSingSongList,
     image: animeImg,
   },
   {
+    key: 'anime',
     name: '動漫歌曲',
     songList: animeSongList,
     image: animeImg,
@@ -74,4 +77,4 @@ const album = [
 
 const myAlbum = []
 
-export { songs, album, myAlbum }
+export { songs, allAlbum, myAlbum }

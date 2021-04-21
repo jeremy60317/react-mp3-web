@@ -55,7 +55,7 @@ const SideBarListStyle = styled.ul`
     height: ${pxToRem(24)};
     margin-right: ${pxToRem(12)};
   }
-  ${(props) => (props.type === 'album' ? sideBarAlbumListStyle : '')}
+  ${(props) => (props.type === 'albumList' ? sideBarAlbumListStyle : '')}
 `
 
 const SideBarBorder = styled.div`

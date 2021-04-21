@@ -5,12 +5,12 @@ import ContextStore from '../../context/contextStore'
 
 const AlbumMain = () => {
   const { indexState, dispatch, actions } = useContext(ContextStore)
-  const { album, myAlbum } = indexState
+  const { allAlbum, myAlbum } = indexState
   const { now, nowHour, nowMin, nowSec, whenTime } = useNowTime()
   return (
     <AlbumMainWrapperStyle bgc="#c7dfdf">
       <div>{`${whenTime}，${now}`}111111</div>
-      {album.map((itm) => {
+      {allAlbum.map((itm) => {
         return (
           <div>
             <img src={itm.image}></img>

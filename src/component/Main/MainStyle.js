@@ -9,6 +9,14 @@ const MainTitleStyle = styled.div`
   font-size: ${pxToRem(40)};
   padding: ${pxToRem(50)} 0 ${pxToRem(30)};
   color: ${font.white};
+  position: relative;
+  span {
+    font-weight: bold;
+    position: absolute;
+    font-size: ${pxToRem(14)};
+    top: ${pxToRem(10)};
+    right: ${pxToRem(10)};
+  }
 `
 
 export { MainTitleStyle }
