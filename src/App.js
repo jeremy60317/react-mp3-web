@@ -1,62 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { API_GET_DATA } from './global/constants'
 
 import ContextStore from './context/contextStore'
 
-import useGlobalState from './hooks/useGlobalState'
+// import useGlobalState from './hooks/useGlobalState'
 import SideBar from './component/SideBar/SideBar'
 import Main from './component/Main/Main'
 import AlbumMain from './component/AlbumMain/AlbumMain'
 import MediaPlayer from './component/MediaPlayer/MediaPlayer'
 import { GlobalStyle, GlobalWrapper } from './globalStyle'
 
+// async function fetchData() {
+//   const res = await fetch(API_GET_DATA)
+//   const data = await res.json()
+//   console.log('data', data)
+// }
+
 const App = () => {
-  const initState = useGlobalState()
-  const {
-    globalState,
-    globalState: { pageReducer },
-    dispatch,
-    actions,
-  } = initState
-  console.log('globalState', globalState)
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
   return (
     <Router>
       <GlobalStyle />
-      <ContextStore.Provider
-        value={{
-          indexState: globalState,
-          dispatch,
-          actions,
-        }}
-      >
-        <GlobalWrapper>
-          <SideBar />
-          {/* <MediaPlayer state={state} /> */}
-          <Switch>
-            <Route exact path="/">
-              <Main
-                type={pageReducer.type}
-                title={pageReducer.title}
-                color={pageReducer.backgroundColor}
-              />
-            </Route>
-            {/* <Route path="/allAlbum">
+      <GlobalWrapper>
+        <SideBar />
+        <Switch>
+          <Route exact path="/">
+            <Main type="index" title="首頁" color="#03808b" />
+          </Route>
+          <Route path="/allAlbum">
+            <Main type="allAlbum" title="所有專輯" color="#671e8b" />
+          </Route>
+          {/* <Route path="/:id">
               <Main
                 type={pageReducer.type}
                 title={pageReducer.title}
                 color={pageReducer.backgroundColor}
               />
             </Route> */}
-            <Route path="/:id">
-              <Main
-                type={pageReducer.type}
-                title={pageReducer.title}
-                color={pageReducer.backgroundColor}
-              />
-            </Route>
-          </Switch>
-        </GlobalWrapper>
-      </ContextStore.Provider>
+        </Switch>
+      </GlobalWrapper>
     </Router>
   )
 }

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import * as action from '../../actions/sideBarAction'
 import Routers from '../../routers'
 import Logo from '../Logo/Logo'
-
-import ContextStore from '../../context/contextStore'
 
 import logoSvg from '../../static/svg/iMusicLogo.svg'
 import homeSvgDefault from '../../static/svg/icon-home-default.svg'
@@ -18,20 +18,26 @@ import {
   SideBarListStyle,
   SideBarBorder,
 } from './SideBarStyle'
+import sideBarReducer from '../../reducers/sideBarReducer'
 
 // import './SideBar.scss'
 
 const Album = (props) => {
-  const { indexState, dispatch, actions } = useContext(ContextStore)
-  const { allAlbum, myAlbum } = indexState
+  const dispatch = useDispatch()
+  const store = useSelector((state) => state.sideBarReducer)
+  console.log('store', store)
+  const onClickLi = () => {
+    dispatch(action.sideBarOnClickItem(1))
+  }
   return (
     <SideBarListStyle type="albumList">
-      <li>
+      <div style={{ color: 'white' }}>{store.itm}</div>
+      <li onClick={onClickLi}>
         <Link to={Routers.allAlbum}>
           <span>我的收藏</span>
         </Link>
       </li>
-      {allAlbum.map((itm, idx) => {
+      {/* {allAlbum.map((itm, idx) => {
         return (
           <li key={itm.name}>
             <Link
@@ -49,21 +55,16 @@ const Album = (props) => {
             </Link>
           </li>
         )
-      })}
+      })} */}
       {/* </ul> */}
     </SideBarListStyle>
   )
 }
 
 const SideBarTitleList = () => {
-  const { indexState, actions, dispatch } = useContext(ContextStore)
   return (
     <SideBarListStyle>
-      <li
-        onClick={() =>
-          dispatch(actions.pageActions.changePageType({ type: 'index' }))
-        }
-      >
+      <li>
         <Link to={Routers.main}>
           <div className="iconBox">
             <img src={homeSvgDefault} />
@@ -71,11 +72,7 @@ const SideBarTitleList = () => {
           <span>首頁</span>
         </Link>
       </li>
-      <li
-        onClick={() =>
-          dispatch(actions.pageActions.changePageType({ type: 'allAlbum' }))
-        }
-      >
+      <li>
         <Link to={Routers.allAlbum}>
           <div className="iconBox">
             <img src={librarySvgDefault} />
@@ -98,9 +95,9 @@ const SideBarTitleList = () => {
 const Border = () => <SideBarBorder />
 
 const SideBar = () => {
-  const { indexState, actions, dispatch } = useContext(ContextStore)
-  console.log('useContext', useContext(ContextStore))
-  console.log('indexState', indexState)
+  // const { indexState, actions, dispatch } = useContext(ContextStore)
+  // console.log('useContext', useContext(ContextStore))
+  // console.log('indexState', indexState)
   return (
     <SideBarWrapperStyle>
       <Logo logo={logoSvg} />

@@ -3,13 +3,13 @@ import { songs, allAlbum } from '../song'
 import { getRandomBackgroundColor } from '../tools/tools'
 
 const sideBarReducer = {
-  favorAlbumList: [],
+  favorSongList: [],
 }
 
 const pageReducer = {
   type: '',
-  title: '首頁',
-  backgroundColor: '#03808b',
+  title: '',
+  backgroundColor: '',
 }
 
 const initState = {
@@ -31,16 +31,16 @@ const useGlobalState = () => {
       changePageType: ({ type = 'other', name = '其他' }) => {
         const obj = {}
         switch (type) {
-          case 'index':
-            obj.type = type
-            obj.title = '首頁'
-            obj.backgroundColor = '#03808b'
-            break
-          case 'allAlbum':
-            obj.type = type
-            obj.title = '所有專輯'
-            obj.backgroundColor = '#671e8b'
-            break
+          // case 'index':
+          //   obj.type = type
+          //   obj.title = '首頁'
+          //   obj.backgroundColor = '#03808b'
+          //   break
+          // case 'allAlbum':
+          //   obj.type = type
+          //   obj.title = '所有專輯'
+          //   obj.backgroundColor = '#671e8b'
+          //   break
           default:
             obj.type = type
             obj.title = name
