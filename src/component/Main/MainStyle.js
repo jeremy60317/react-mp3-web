@@ -13,7 +13,7 @@ const MainTitleStyle = styled.div`
   span {
     font-weight: bold;
     position: absolute;
-    font-size: ${pxToRem(14)};
+    font-size: ${pxToRem(13)};
     top: ${pxToRem(10)};
     right: ${pxToRem(10)};
   }
