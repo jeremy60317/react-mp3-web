@@ -12,27 +12,24 @@ import searchSvgDefault from '../../static/svg/icon-search-default.svg'
 import searchSvgFocus from '../../static/svg/icon-search-focus.svg'
 import librarySvgDefault from '../../static/svg/icon-my-library-default.svg'
 import librarySvgFocus from '../../static/svg/icon-my-library-focus.svg'
-
 import {
   SideBarWrapperStyle,
   SideBarListStyle,
   SideBarBorder,
 } from './SideBarStyle'
-import sideBarReducer from '../../reducers/sideBarReducer'
-
-// import './SideBar.scss'
 
 const Album = (props) => {
   const dispatch = useDispatch()
   const store = useSelector((state) => state.sideBarReducer)
-  console.log('store', store)
-  const onClickLi = () => {
+
+  function onClickLi() {
     dispatch(action.sideBarOnClickItem(1))
   }
+
   return (
     <SideBarListStyle type="albumList">
       <div style={{ color: 'white' }}>{store.itm}</div>
-      <li onClick={onClickLi}>
+      <li onClick={() => onClickLi()}>
         <Link to={Routers.allAlbum}>
           <span>我的收藏</span>
         </Link>
